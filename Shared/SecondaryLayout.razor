@@ -1,0 +1,40 @@
+﻿@inherits LayoutComponentBase
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4 bg-danger">
+        <span class="flex-fill text-white">Experimental Page</span>
+        <button class="btn btn-primary mx-2" @onclick="ThumbsUp">
+            <span class="oi oi-thumb-up"></span> Approvals @approvals
+        </button>
+        <button class="btn btn-primary mx-2" @onclick="ThumbsDown">
+            <span class="oi oi-thumb-down"></span> Disapprovals @disapprovals
+        </button>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+
+    <footer class="text-center">
+        Copyright @DateTime.Now.Year By Vrail RavensBlood LLC
+    </footer>
+</div>
+
+@code{
+    private int approvals = 0;
+    private int disapprovals = 0;
+
+    private void ThumbsUp()
+    {
+        approvals += 1;
+    }
+
+    private void ThumbsDown()
+    {
+        disapprovals += 1;
+    }
+}
